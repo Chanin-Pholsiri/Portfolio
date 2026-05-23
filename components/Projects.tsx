@@ -52,6 +52,66 @@ const projects = [
     gradient: "from-orange-500/10 to-amber-500/10",
     border: "border-orange-400/20",
   },
+  {
+    title: "Pixcore",
+    description:
+      "E-commerce platform for premium mechanical keyboards engineered for developers. Features product configurator (switches, plate material, case color), QMK/VIA firmware support, hot-swap PCB listings, and a full shopping cart — priced in Thai Baht.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    highlight: "E-Commerce",
+    highlightColor: "text-emerald-400 border-emerald-400/30 bg-emerald-400/10",
+    status: "Live",
+    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
+    github: "https://github.com/Chanin-Pholsiri/pixcore",
+    demo: "https://pixcore-seven.vercel.app/",
+    isPrivate: false,
+    gradient: "from-emerald-500/10 to-green-500/10",
+    border: "border-emerald-400/20",
+  },
+  {
+    title: "Veltron",
+    description:
+      "Product marketing site for a smart wearable brand. Showcases three smartwatch models with health-monitoring specs (ECG, SpO2, GPS, sleep analysis), AI wellness insights, and localized e-commerce for Thai market.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    highlight: "Product Site",
+    highlightColor: "text-blue-400 border-blue-400/30 bg-blue-400/10",
+    status: "Live",
+    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
+    github: "https://github.com/Chanin-Pholsiri/veltron",
+    demo: "https://veltron-fawn.vercel.app/",
+    isPrivate: false,
+    gradient: "from-blue-500/10 to-indigo-500/10",
+    border: "border-blue-400/20",
+  },
+  {
+    title: "Agency Studio",
+    description:
+      "Creative design agency website offering brand identity, web design, UI/UX, and content strategy for startups and established brands across Asia. Features tiered pricing packages and a curated project showcase.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    highlight: "Agency",
+    highlightColor: "text-pink-400 border-pink-400/30 bg-pink-400/10",
+    status: "Live",
+    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
+    github: "https://github.com/Chanin-Pholsiri/agency-studio",
+    demo: "https://stackly-4b99.vercel.app/",
+    isPrivate: false,
+    gradient: "from-pink-500/10 to-rose-500/10",
+    border: "border-pink-400/20",
+  },
+  {
+    title: "Stackly",
+    description:
+      "Web development studio landing page based in Bangkok. Highlights full-stack services (Next.js, Node.js, PostgreSQL, AWS), fixed-price packages from MVP to enterprise, and a clear discovery-call CTA.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    highlight: "Dev Studio",
+    highlightColor: "text-teal-400 border-teal-400/30 bg-teal-400/10",
+    status: "Live",
+    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
+    github: "https://github.com/Chanin-Pholsiri/stackly",
+    demo: "https://stackly-8.vercel.app/",
+    isPrivate: false,
+    gradient: "from-teal-500/10 to-cyan-500/10",
+    border: "border-teal-400/20",
+  },
 ];
 
 export default function Projects() {
@@ -89,15 +149,15 @@ export default function Projects() {
               className={`relative glass rounded-2xl overflow-hidden border ${project.border} group hover:scale-[1.01] transition-transform duration-300`}
             >
               {/* Gradient accent top bar */}
-              <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r ${project.gradient.replace("/10", "/60")}`} />
+              <div className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r ${project.gradient.replace("/10", "/60")}`} />
 
               {/* Gradient bg */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} pointer-events-none`} />
+              <div className={`absolute inset-0 bg-linear-to-br ${project.gradient} pointer-events-none`} />
 
               <div className="relative p-7">
                 <div className="flex flex-col md:flex-row md:items-start gap-5">
                   {/* Icon */}
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.gradient} border ${project.border} flex items-center justify-center shrink-0`}>
+                  <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${project.gradient} border ${project.border} flex items-center justify-center shrink-0`}>
                     <Layers size={22} className="text-slate-300" />
                   </div>
 
@@ -153,6 +213,8 @@ export default function Projects() {
                           {project.demo && (
                             <a
                               href={project.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-400 transition-colors"
                             >
                               <ExternalLink size={13} />
