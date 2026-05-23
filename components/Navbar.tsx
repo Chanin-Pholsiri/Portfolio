@@ -22,6 +22,13 @@ export default function Navbar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
 
+      const nearBottom =
+        window.scrollY + window.innerHeight >= document.body.scrollHeight - 80;
+      if (nearBottom) {
+        setActive("#contact");
+        return;
+      }
+
       const sections = links.map((l) => l.href.slice(1));
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id);
