@@ -10,29 +10,21 @@ const highlights = [
     icon: Code2,
     title: "Frontend Architecture",
     desc: "TypeScript-first design with React, Next.js & Angular — SSR, component systems, and pixel-perfect UIs.",
-    color: "text-cyan-400",
-    bg: "bg-cyan-400/10",
   },
   {
     icon: Server,
     title: "Backend & APIs",
     desc: "Production APIs with ASP.NET Core, Spring Boot & Node.js. Clean architecture, SOLID, secure auth.",
-    color: "text-violet-400",
-    bg: "bg-violet-400/10",
   },
   {
     icon: Container,
     title: "DevOps & Deployment",
     desc: "Docker, Kubernetes, Nginx, CI/CD — comfortable taking features from code to production reliably.",
-    color: "text-emerald-400",
-    bg: "bg-emerald-400/10",
   },
   {
     icon: Users,
     title: "Agile Collaboration",
     desc: "Scrum ceremonies, code reviews, cross-functional teams, and mentoring junior developers.",
-    color: "text-orange-400",
-    bg: "bg-orange-400/10",
   },
 ];
 
@@ -62,7 +54,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <p className="text-slate-300 text-lg leading-relaxed mb-5">
-              I'm a{" "}
+              I&apos;m a{" "}
               <span className="text-cyan-400 font-semibold">Mid-Level Full-Stack Software Engineer</span>{" "}
               based in Bangkok, Thailand, with 4+ years turning complex requirements into
               scalable, maintainable software — across fintech, enterprise, and startup environments.
@@ -142,7 +134,7 @@ export default function About() {
 
         {/* Highlight cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {highlights.map(({ icon: Icon, title, desc, color, bg }, i) => (
+          {highlights.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 20 }}
@@ -150,8 +142,8 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.35 + i * 0.1 }}
               className="glass rounded-xl p-5 group hover:scale-[1.02] transition-all duration-300 cursor-default"
             >
-              <div className={`w-10 h-10 rounded-lg ${bg} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-                <Icon size={20} className={color} />
+              <div className="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Icon size={20} className="text-cyan-400" />
               </div>
               <h3 className="text-slate-100 font-semibold text-sm mb-2">{title}</h3>
               <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>

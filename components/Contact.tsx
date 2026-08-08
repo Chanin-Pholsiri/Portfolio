@@ -59,11 +59,11 @@ export default function Contact() {
             Get In Touch
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-slate-400 max-w-lg mx-auto">
             Open to new opportunities, collaborations, and interesting projects.
-            Feel free to reach out — I'd love to hear from you.
+            Feel free to reach out — I&apos;d love to hear from you.
           </p>
         </motion.div>
 

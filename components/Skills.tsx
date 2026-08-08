@@ -9,10 +9,6 @@ const skillGroups = [
   {
     icon: Monitor,
     category: "Frontend",
-    accentClass: "text-cyan-400",
-    glowColor: "rgba(6,182,212,0.12)",
-    borderColor: "border-cyan-400/20",
-    badgeHover: "hover:border-cyan-400/50 hover:text-cyan-300 hover:bg-cyan-400/10",
     skills: [
       { name: "React", level: "Expert" },
       { name: "Next.js", level: "Expert" },
@@ -28,10 +24,6 @@ const skillGroups = [
   {
     icon: Server,
     category: "Backend",
-    accentClass: "text-violet-400",
-    glowColor: "rgba(139,92,246,0.12)",
-    borderColor: "border-violet-400/20",
-    badgeHover: "hover:border-violet-400/50 hover:text-violet-300 hover:bg-violet-400/10",
     skills: [
       { name: "ASP.NET Core", level: "Expert" },
       { name: "Spring Boot", level: "Proficient" },
@@ -46,10 +38,6 @@ const skillGroups = [
   {
     icon: Container,
     category: "DevOps & Infra",
-    accentClass: "text-emerald-400",
-    glowColor: "rgba(16,185,129,0.12)",
-    borderColor: "border-emerald-400/20",
-    badgeHover: "hover:border-emerald-400/50 hover:text-emerald-300 hover:bg-emerald-400/10",
     skills: [
       { name: "Docker", level: "Expert" },
       { name: "Kubernetes", level: "Proficient" },
@@ -63,10 +51,6 @@ const skillGroups = [
   {
     icon: Database,
     category: "Databases",
-    accentClass: "text-orange-400",
-    glowColor: "rgba(249,115,22,0.12)",
-    borderColor: "border-orange-400/20",
-    badgeHover: "hover:border-orange-400/50 hover:text-orange-300 hover:bg-orange-400/10",
     skills: [
       { name: "PostgreSQL", level: "Proficient" },
       { name: "MySQL", level: "Proficient" },
@@ -126,16 +110,15 @@ export default function Skills() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + gi * 0.1 }}
-              className={`glass rounded-2xl p-6 border ${group.borderColor}`}
-              style={{ boxShadow: `0 0 30px ${group.glowColor}` }}
+              className="glass rounded-2xl p-6 border border-cyan-400/20"
+              style={{ boxShadow: "0 0 30px rgba(6,182,212,0.12)" }}
             >
               {/* Category header */}
               <div className="flex items-center gap-2.5 mb-5">
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center`}
-                  style={{ background: group.glowColor.replace("0.12", "0.2") }}>
-                  <group.icon size={16} className={group.accentClass} />
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-cyan-400/20">
+                  <group.icon size={16} className="text-cyan-400" />
                 </div>
-                <h3 className={`text-sm font-bold tracking-widest uppercase ${group.accentClass}`}>
+                <h3 className="text-sm font-bold tracking-widest uppercase text-cyan-400">
                   {group.category}
                 </h3>
               </div>
@@ -150,9 +133,9 @@ export default function Skills() {
                       initial={{ opacity: 0, scale: 0.85 }}
                       animate={inView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.3, delay: 0.2 + gi * 0.08 + si * 0.04 }}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
                         bg-slate-800/60 text-slate-300 border border-slate-700/50
-                        ${group.badgeHover} transition-all duration-200 cursor-default`}
+                        hover:border-cyan-400/50 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all duration-200 cursor-default"
                     >
                       <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${cfg.dotClass}`} />
                       {skill.name}

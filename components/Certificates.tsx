@@ -3,69 +3,31 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Award, Star, BookOpen } from "lucide-react";
+import { ExternalLink, Star } from "lucide-react";
 
-const levelColor: Record<string, { text: string; bg: string; border: string; dot: string }> = {
-  Basic:        { text: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/30", dot: "bg-emerald-400" },
-  Intermediate: { text: "text-cyan-400",    bg: "bg-cyan-400/10",    border: "border-cyan-400/30",    dot: "bg-cyan-400"    },
-  Advanced:     { text: "text-violet-400",  bg: "bg-violet-400/10",  border: "border-violet-400/30",  dot: "bg-violet-400"  },
-  Role:         { text: "text-amber-400",   bg: "bg-amber-400/10",   border: "border-amber-400/30",   dot: "bg-amber-400"   },
-};
-
-// Featured role certs shown at the top
+// Featured role certs — the most relevant credentials to show at a glance.
+// Full list (26 certs across languages, frontend, database, DevOps, AWS,
+// etc.) is one click away via the profile links below.
 const featured = [
   {
     name: "Software Engineer",
-    level: "Role",
     url: "https://www.hackerrank.com/certificates/f81195877e7d",
     topics: "Problem Solving · SQL · REST API",
     desc: "Comprehensive role-based certification validating full software engineering skills.",
   },
   {
     name: "Software Engineer Intern",
-    level: "Role",
     url: "https://www.hackerrank.com/certificates/dbc04c586bc1",
     topics: "Problem Solving · SQL",
     desc: "Entry-level role certification covering core engineering fundamentals.",
   },
 ];
 
-const groups = [
-  {
-    category: "Languages",
-    certs: [
-      { name: "Python",     level: "Basic",        url: "https://www.hackerrank.com/certificates/08fd950d41d6", topics: "Scalar Types · Control Flow · Collections · Classes" },
-      { name: "JavaScript", level: "Basic",        url: "https://www.hackerrank.com/certificates/0ea5d24fb58b", topics: "Functions · Hoisting · Scope · Inheritance · Events" },
-      { name: "JavaScript", level: "Intermediate", url: "https://www.hackerrank.com/certificates/b9b1c65e9f4d", topics: "Design Patterns · Memory Management · Concurrency · Event Loop" },
-      { name: "Java",       level: "Basic",        url: "https://www.hackerrank.com/certificates/8b2c03089ace", topics: "Classes · Data Structures · Inheritance · Exception Handling" },
-      { name: "C#",         level: "Basic",        url: "https://www.hackerrank.com/certificates/ea3458ac0203", topics: "Types · Basic OOP · Properties · Collections · Exception Handling" },
-    ],
-  },
-  {
-    category: "Frontend",
-    certs: [
-      { name: "React",   level: "Basic",        url: "https://www.hackerrank.com/certificates/a8a6180219be", topics: "Routing · Rendering · State Management · Events · Form Validation" },
-      { name: "Angular", level: "Basic",        url: "https://www.hackerrank.com/certificates/ea395d195121", topics: "Components · TypeScript · Two-Way Binding · Form Validation" },
-      { name: "Angular", level: "Intermediate", url: "https://www.hackerrank.com/certificates/50ac4a95a1bc", topics: "Routing · NgModules · Observables · Dependency Injection · APIs" },
-      { name: "CSS",     level: "Basic",        url: "https://www.hackerrank.com/certificates/e4e34399d5a0", topics: "Cascading · Inheritance · Text Styling · Layouts · Box Model" },
-    ],
-  },
-  {
-    category: "Database",
-    certs: [
-      { name: "SQL", level: "Basic",        url: "https://www.hackerrank.com/certificates/3c286e7f0520", topics: "Simple Queries · Relationships · Aggregators" },
-      { name: "SQL", level: "Intermediate", url: "https://www.hackerrank.com/certificates/a306bc61fea6", topics: "Complex Joins · Unions · Sub-queries" },
-      { name: "SQL", level: "Advanced",     url: "https://www.hackerrank.com/certificates/34fa6a778098", topics: "Query Optimization · Indexing · Window Functions · Pivots" },
-    ],
-  },
-  {
-    category: "Problem Solving & API",
-    certs: [
-      { name: "Problem Solving", level: "Basic",        url: "https://www.hackerrank.com/certificates/0af3e11fd84d", topics: "Arrays · Strings · Sorting · Searching" },
-      { name: "Problem Solving", level: "Intermediate", url: "https://www.hackerrank.com/certificates/d607c04bca0e", topics: "HashMaps · Stacks · Queues · Optimal Solutions" },
-      { name: "REST API",        level: "Intermediate", url: "https://www.hackerrank.com/certificates/3191ac268947", topics: "API Data Retrieval · Parameters · Pagination" },
-    ],
-  },
+const stats = [
+  { value: "17", label: "HackerRank" },
+  { value: "9", label: "FutureSkill" },
+  { value: "26", label: "Total Certs" },
+  { value: "2", label: "Role Certs" },
 ];
 
 function FutureSkillLogo({ size = 18 }: { size?: number }) {
@@ -96,7 +58,7 @@ export default function Certificates() {
 
   return (
     <section id="certificates" className="relative py-28 px-6" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
 
         {/* Header */}
         <motion.div
@@ -111,14 +73,10 @@ export default function Certificates() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
             HackerRank Certificates
           </h2>
-          <div className="flex items-center justify-center gap-5 mt-4">
-            {Object.entries(levelColor).map(([level, cfg]) => (
-              <div key={level} className="flex items-center gap-1.5 text-xs text-slate-500">
-                <span className={`w-2 h-2 rounded-full ${cfg.dot}`} />
-                {level}
-              </div>
-            ))}
-          </div>
+          <p className="text-slate-500 max-w-lg mx-auto text-sm leading-relaxed">
+            26 certificates across languages, frameworks, databases, and cloud —
+            role certifications highlighted below, full list on my HackerRank profile.
+          </p>
         </motion.div>
 
         {/* Featured Role Certificates */}
@@ -126,210 +84,48 @@ export default function Certificates() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-8"
+          className="mb-10"
         >
           <div className="flex items-center gap-2 mb-4">
-            <Star size={14} className="text-amber-400" />
-            <span className="text-xs font-bold tracking-widest uppercase text-amber-400">
+            <Star size={14} className="text-cyan-400" />
+            <span className="text-xs font-bold tracking-widest uppercase text-cyan-400">
               Role Certificates
             </span>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
-            {featured.map((cert, i) => {
-              const cfg = levelColor[cert.level];
-              return (
-                <motion.a
-                  key={cert.url}
-                  href={cert.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.45, delay: 0.15 + i * 0.1 }}
-                  className="relative glass rounded-2xl p-5 border border-amber-400/20 group
-                    hover:border-amber-400/40 hover:scale-[1.02] transition-all duration-300 overflow-hidden"
-                  style={{ boxShadow: "0 0 30px rgba(251,191,36,0.08)" }}
-                >
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent" />
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#00EA64]/10 border border-[#00EA64]/20
-                      flex items-center justify-center shrink-0 text-[#00EA64]">
-                      <HackerRankLogo size={20} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-slate-100 font-bold text-base">{cert.name}</span>
-                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${cfg.text} ${cfg.bg} ${cfg.border}`}>
-                          {cert.level}
-                        </span>
-                      </div>
-                      <p className="text-slate-500 text-xs mb-2">{cert.topics}</p>
-                      <p className="text-slate-600 text-xs leading-relaxed">{cert.desc}</p>
-                    </div>
-                    <ExternalLink size={13} className="text-slate-700 group-hover:text-amber-400 transition-colors shrink-0 mt-1" />
-                  </div>
-                </motion.a>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Skill Certificates grouped */}
-        <div className="grid md:grid-cols-2 gap-5">
-          {groups.map((group, gi) => (
-            <motion.div
-              key={group.category}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.25 + gi * 0.1 }}
-              className="glass rounded-2xl p-5"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Award size={14} className="text-slate-500" />
-                <h3 className="text-xs font-bold tracking-widest uppercase text-slate-500">
-                  {group.category}
-                </h3>
-              </div>
-
-              <div className="flex flex-col gap-2.5">
-                {group.certs.map((cert, ci) => {
-                  const cfg = levelColor[cert.level];
-                  return (
-                    <motion.a
-                      key={cert.url}
-                      href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={inView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.35, delay: 0.3 + gi * 0.08 + ci * 0.06 }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/40
-                        hover:border-slate-600/60 hover:bg-slate-800/70 transition-all duration-200 group"
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-[#00EA64]/10 border border-[#00EA64]/20
-                        flex items-center justify-center shrink-0 text-[#00EA64]">
-                        <HackerRankLogo size={16} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className="text-slate-200 font-semibold text-sm">{cert.name}</span>
-                          <span className={`px-2 py-0.5 rounded-full text-xs font-medium border shrink-0 ${cfg.text} ${cfg.bg} ${cfg.border}`}>
-                            {cert.level}
-                          </span>
-                        </div>
-                        <p className="text-slate-600 text-xs mt-0.5 truncate">{cert.topics}</p>
-                      </div>
-                      <ExternalLink size={12} className="text-slate-700 group-hover:text-cyan-400 transition-colors shrink-0" />
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* FutureSkill Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-10"
-        >
-          <div className="flex items-center gap-2 mb-5">
-            <BookOpen size={14} className="text-violet-400" />
-            <span className="text-xs font-bold tracking-widest uppercase text-violet-400">
-              FutureSkill — Completion Certificates
-            </span>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {/* Docker */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: 0.65 }}
-              className="glass rounded-2xl p-5 border border-cyan-400/15"
-            >
-              <p className="text-xs font-bold tracking-widest uppercase text-cyan-400 mb-3">Docker</p>
-              {[
-                { name: "Docker Hands-On Step-by-Step (2 hrs)", date: "08/09/2024", url: "https://app.futureskill.co/api/certificate?courseId=29&userId=206945" },
-              ].map((c) => (
-                <a key={c.url} href={c.url} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/40
-                    hover:border-cyan-400/40 hover:bg-slate-800/70 transition-all duration-200 group">
-                  <div className="w-8 h-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
-                    <FutureSkillLogo size={16} />
+            {featured.map((cert, i) => (
+              <motion.a
+                key={cert.url}
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: 0.15 + i * 0.1 }}
+                className="relative glass rounded-2xl p-5 border border-cyan-400/20 group
+                  hover:border-cyan-400/40 hover:scale-[1.02] transition-all duration-300 overflow-hidden"
+                style={{ boxShadow: "0 0 30px rgba(6,182,212,0.08)" }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#00EA64]/10 border border-[#00EA64]/20
+                    flex items-center justify-center shrink-0 text-[#00EA64]">
+                    <HackerRankLogo size={20} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-slate-200 font-semibold text-sm">{c.name}</p>
-                    <p className="text-slate-600 text-xs mt-0.5">{c.date}</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-slate-100 font-bold text-base">{cert.name}</span>
+                      <span className="px-2 py-0.5 rounded-full text-xs font-medium border text-cyan-400 bg-cyan-400/10 border-cyan-400/30">
+                        Role
+                      </span>
+                    </div>
+                    <p className="text-slate-500 text-xs mb-2">{cert.topics}</p>
+                    <p className="text-slate-600 text-xs leading-relaxed">{cert.desc}</p>
                   </div>
-                  <ExternalLink size={12} className="text-slate-700 group-hover:text-cyan-400 transition-colors shrink-0" />
-                </a>
-              ))}
-            </motion.div>
-
-            {/* DevOps */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: 0.72 }}
-              className="glass rounded-2xl p-5 border border-emerald-400/15"
-            >
-              <p className="text-xs font-bold tracking-widest uppercase text-emerald-400 mb-3">DevOps</p>
-              <div className="flex flex-col gap-2">
-                {[
-                  { name: "Getting Started with DevOps",              date: "14/09/2024", url: "https://app.futureskill.co/api/certificate?courseId=490&userId=206945" },
-                  { name: "Hands-On DevOps",                          date: "15/09/2024", url: "https://app.futureskill.co/api/certificate?courseId=500&userId=206945" },
-                  { name: "Monitoring & Logging for DevOps",          date: "31/10/2024", url: "https://app.futureskill.co/api/certificate?courseId=501&userId=206945" },
-                  { name: "Advance Topics Beyond DevOps",             date: "31/10/2024", url: "https://app.futureskill.co/api/certificate?courseId=502&userId=206945" },
-                ].map((c) => (
-                  <a key={c.url} href={c.url} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/40
-                      hover:border-emerald-400/40 hover:bg-slate-800/70 transition-all duration-200 group">
-                    <div className="w-8 h-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
-                      <FutureSkillLogo size={16} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-slate-200 font-semibold text-sm leading-tight">{c.name}</p>
-                      <p className="text-slate-600 text-xs mt-0.5">{c.date}</p>
-                    </div>
-                    <ExternalLink size={12} className="text-slate-700 group-hover:text-emerald-400 transition-colors shrink-0" />
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* AWS Cloud — spans full width */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: 0.8 }}
-              className="glass rounded-2xl p-5 border border-orange-400/15 md:col-span-2"
-            >
-              <p className="text-xs font-bold tracking-widest uppercase text-orange-400 mb-3">AWS Cloud</p>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {[
-                  { name: "Getting Started with Cloud & AWS Cloud",     date: "06/12/2024", url: "https://app.futureskill.co/api/certificate?courseId=275&userId=206945" },
-                  { name: "Introduction to AWS Core Services",           date: "05/12/2024", url: "https://app.futureskill.co/api/certificate?courseId=277&userId=206945" },
-                  { name: "AWS Network, Security & Management Services", date: "05/12/2024", url: "https://app.futureskill.co/api/certificate?courseId=278&userId=206945" },
-                  { name: "Workshop: Deploy Web App on EC2 (AWS)",       date: "31/10/2024", url: "https://app.futureskill.co/api/certificate?courseId=279&userId=206945" },
-                ].map((c) => (
-                  <a key={c.url} href={c.url} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/40
-                      hover:border-orange-400/40 hover:bg-slate-800/70 transition-all duration-200 group">
-                    <div className="w-8 h-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
-                      <FutureSkillLogo size={16} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-slate-200 font-semibold text-sm leading-tight">{c.name}</p>
-                      <p className="text-slate-600 text-xs mt-0.5">{c.date}</p>
-                    </div>
-                    <ExternalLink size={12} className="text-slate-700 group-hover:text-orange-400 transition-colors shrink-0" />
-                  </a>
-                ))}
-              </div>
-            </motion.div>
+                  <ExternalLink size={13} className="text-slate-700 group-hover:text-cyan-400 transition-colors shrink-0 mt-1" />
+                </div>
+              </motion.a>
+            ))}
           </div>
         </motion.div>
 
@@ -337,15 +133,10 @@ export default function Certificates() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.88 }}
-          className="mt-8 glass rounded-2xl p-5 flex flex-wrap justify-center gap-8"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="glass rounded-2xl p-5 flex flex-wrap justify-center gap-8"
         >
-          {[
-            { value: "17", label: "HackerRank" },
-            { value: "9",  label: "FutureSkill" },
-            { value: "26", label: "Total Certs" },
-            { value: "2",  label: "Role Certs" },
-          ].map(({ value, label }) => (
+          {stats.map(({ value, label }) => (
             <div key={label} className="text-center">
               <div className="text-2xl font-bold gradient-text">{value}</div>
               <div className="text-xs text-slate-500 mt-0.5">{label}</div>
@@ -357,7 +148,7 @@ export default function Certificates() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.95 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-3 mt-8"
         >
           <a

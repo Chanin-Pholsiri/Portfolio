@@ -13,7 +13,7 @@ export default function Footer() {
 
         <div className="flex items-center gap-4">
           <a
-            href="https://github.com/chaninpholsiri"
+            href="https://github.com/chanin-pholsiri"
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-500 hover:text-cyan-400 transition-colors"
@@ -22,7 +22,7 @@ export default function Footer() {
             <GitHubIcon size={16} />
           </a>
           <a
-            href="https://linkedin.com/in/chaninpholsiri"
+            href="https://www.linkedin.com/in/chanin-pholsiri"
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-500 hover:text-cyan-400 transition-colors"

@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 70%)", animation: "float 7s ease-in-out infinite" }} />
       <div className="absolute bottom-1/4 right-1/4 w-56 h-56 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(129,140,248,0.05) 0%, transparent 70%)", animation: "float 5s ease-in-out infinite reverse" }} />
+        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%)", animation: "float 5s ease-in-out infinite reverse" }} />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
 

@@ -63,10 +63,18 @@ body {
 }
 
 .glass {
+  @apply backdrop-blur-md;
   background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(6, 182, 212, 0.12);
+}
+
+/* Higher-opacity variant for the navbar / mobile menu — floats over
+   scrolling content, so it needs to stay legible against bright text
+   and colored badges behind it, not just look "glassy". */
+.glass-nav {
+  @apply backdrop-blur-lg;
+  background: rgba(8, 12, 20, 0.98);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.12);
 }
 
 .glow {

@@ -13,14 +13,10 @@ const projects = [
       "Confidential enterprise backend system developed under Thailand's Technology Crime Prevention and Suppression Act (B.E. 2566), Sections 6 & 7. Built Spring Boot microservices for Phase 2 — covering fund suspension APIs for mule account detection, conditional unsuspension workflows, and bank warrant / legal hold request processing. Designed with strict security controls, audit logging, and high-availability deployment for sensitive financial operations.",
     tags: ["Spring Boot", "Java", "Angular", "Jenkins", "Rancher", "Harbor", "PostgreSQL"],
     highlight: "Fintech · Confidential",
-    highlightColor: "text-cyan-400 border-cyan-400/30 bg-cyan-400/10",
     status: "Production",
-    statusColor: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
     github: null,
     demo: null,
     isPrivate: true,
-    gradient: "from-cyan-500/10 to-blue-500/10",
-    border: "border-cyan-400/20",
   },
   {
     title: "Enterprise Web Application Suite",
@@ -28,14 +24,10 @@ const projects = [
       "Full-stack enterprise applications for G-Able's clients — covering responsive Angular frontends, Node.js/Python APIs, and multi-environment Docker deployments. Led UI architecture and API validation.",
     tags: ["Angular", "TypeScript", "Node.js", ".NET Core", "Python", "Docker", "Bootstrap"],
     highlight: "Enterprise",
-    highlightColor: "text-violet-400 border-violet-400/30 bg-violet-400/10",
-    status: "Enterprise",
-    statusColor: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
+    status: "Production",
     github: null,
     demo: null,
     isPrivate: true,
-    gradient: "from-violet-500/10 to-purple-500/10",
-    border: "border-violet-400/20",
   },
   {
     title: "Portfolio Website",
@@ -43,14 +35,10 @@ const projects = [
       "This very portfolio — built with Next.js App Router, Tailwind CSS v4, and Framer Motion. Features scroll-triggered animations, glassmorphism design, responsive layout, and optimized performance with SSR.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     highlight: "Open Source",
-    highlightColor: "text-orange-400 border-orange-400/30 bg-orange-400/10",
     status: "Live",
-    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
     github: "https://github.com/chanin-pholsiri",
     demo: "#hero",
     isPrivate: false,
-    gradient: "from-orange-500/10 to-amber-500/10",
-    border: "border-orange-400/20",
   },
   {
     title: "Pixcore",
@@ -58,14 +46,10 @@ const projects = [
       "E-commerce platform for premium mechanical keyboards engineered for developers. Features product configurator (switches, plate material, case color), QMK/VIA firmware support, hot-swap PCB listings, and a full shopping cart — priced in Thai Baht.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     highlight: "E-Commerce",
-    highlightColor: "text-emerald-400 border-emerald-400/30 bg-emerald-400/10",
     status: "Live",
-    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
     github: "https://github.com/Chanin-Pholsiri/pixcore",
     demo: "https://pixcore-seven.vercel.app/",
     isPrivate: false,
-    gradient: "from-emerald-500/10 to-green-500/10",
-    border: "border-emerald-400/20",
   },
   {
     title: "Veltron",
@@ -73,14 +57,10 @@ const projects = [
       "Product marketing site for a smart wearable brand. Showcases three smartwatch models with health-monitoring specs (ECG, SpO2, GPS, sleep analysis), AI wellness insights, and localized e-commerce for Thai market.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     highlight: "Product Site",
-    highlightColor: "text-blue-400 border-blue-400/30 bg-blue-400/10",
     status: "Live",
-    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
     github: "https://github.com/Chanin-Pholsiri/veltron",
     demo: "https://veltron-fawn.vercel.app/",
     isPrivate: false,
-    gradient: "from-blue-500/10 to-indigo-500/10",
-    border: "border-blue-400/20",
   },
   {
     title: "Agency Studio",
@@ -88,14 +68,10 @@ const projects = [
       "Creative design agency website offering brand identity, web design, UI/UX, and content strategy for startups and established brands across Asia. Features tiered pricing packages and a curated project showcase.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     highlight: "Agency",
-    highlightColor: "text-pink-400 border-pink-400/30 bg-pink-400/10",
     status: "Live",
-    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
     github: "https://github.com/Chanin-Pholsiri/agency-studio",
     demo: "https://stackly-4b99.vercel.app/",
     isPrivate: false,
-    gradient: "from-pink-500/10 to-rose-500/10",
-    border: "border-pink-400/20",
   },
   {
     title: "Stackly",
@@ -103,14 +79,10 @@ const projects = [
       "Web development studio landing page based in Bangkok. Highlights full-stack services (Next.js, Node.js, PostgreSQL, AWS), fixed-price packages from MVP to enterprise, and a clear discovery-call CTA.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     highlight: "Dev Studio",
-    highlightColor: "text-teal-400 border-teal-400/30 bg-teal-400/10",
     status: "Live",
-    statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
     github: "https://github.com/Chanin-Pholsiri/stackly",
     demo: "https://stackly-8.vercel.app/",
     isPrivate: false,
-    gradient: "from-teal-500/10 to-cyan-500/10",
-    border: "border-teal-400/20",
   },
 ];
 
@@ -134,7 +106,7 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p className="text-slate-500 max-w-xl mx-auto text-sm leading-relaxed">
-            A selection of projects I've architected and shipped across fintech,
+            A selection of projects I&apos;ve architected and shipped across fintech,
             enterprise, and personal domains.
           </p>
         </motion.div>
@@ -146,18 +118,18 @@ export default function Projects() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.1 + i * 0.12 }}
-              className={`relative glass rounded-2xl overflow-hidden border ${project.border} group hover:scale-[1.01] transition-transform duration-300`}
+              className="relative glass rounded-2xl overflow-hidden border border-cyan-400/20 group hover:scale-[1.01] transition-transform duration-300"
             >
               {/* Gradient accent top bar */}
-              <div className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r ${project.gradient.replace("/10", "/60")}`} />
+              <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-cyan-500/60 to-blue-500/60" />
 
               {/* Gradient bg */}
-              <div className={`absolute inset-0 bg-linear-to-br ${project.gradient} pointer-events-none`} />
+              <div className="absolute inset-0 bg-linear-to-br from-cyan-500/5 to-blue-500/5 pointer-events-none" />
 
               <div className="relative p-7">
                 <div className="flex flex-col md:flex-row md:items-start gap-5">
                   {/* Icon */}
-                  <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${project.gradient} border ${project.border} flex items-center justify-center shrink-0`}>
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-400/20 flex items-center justify-center shrink-0">
                     <Layers size={22} className="text-slate-300" />
                   </div>
 
@@ -165,10 +137,10 @@ export default function Projects() {
                     {/* Title row */}
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <h3 className="text-slate-100 font-bold text-xl">{project.title}</h3>
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${project.highlightColor}`}>
+                      <span className="px-2 py-0.5 rounded-full text-xs font-medium border text-cyan-400 border-cyan-400/30 bg-cyan-400/10">
                         {project.highlight}
                       </span>
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${project.statusColor}`}>
+                      <span className="px-2 py-0.5 rounded-full text-xs font-medium border text-cyan-400 border-cyan-400/30 bg-cyan-400/10">
                         {project.status}
                       </span>
                     </div>
