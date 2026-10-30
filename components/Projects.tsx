@@ -1,16 +1,13 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, Lock, Layers } from "lucide-react";
+import { ExternalLink, Lock } from "lucide-react";
 import { GitHubIcon } from "./Icons";
+import Section from "./Section";
+import CodeWindow from "./CodeWindow";
 
 const projects = [
   {
     title: "Financial Crime Prevention API System",
     description:
-      "Confidential enterprise backend system developed under Thailand's Technology Crime Prevention and Suppression Act (B.E. 2566), Sections 6 & 7. Built Spring Boot microservices for Phase 2 — covering fund suspension APIs for mule account detection, conditional unsuspension workflows, and bank warrant / legal hold request processing. Designed with strict security controls, audit logging, and high-availability deployment for sensitive financial operations.",
+      "Confidential enterprise backend built under Thailand's Technology Crime Prevention and Suppression Act (B.E. 2566), Sections 6 & 7. As the sole engineer, I own every Spring Boot API — fund suspension of mule accounts, conditional release, and bank warrant / legal hold processing — integrated with all banks and non-bank financial institutions in Thailand and handling 300–600 enforcement cases per day. Built with strict security controls, audit logging, and high-availability deployment.",
     tags: ["Spring Boot", "Java", "Angular", "Jenkins", "Rancher", "Harbor", "PostgreSQL"],
     highlight: "Fintech · Confidential",
     status: "Production",
@@ -32,7 +29,7 @@ const projects = [
   {
     title: "Portfolio Website",
     description:
-      "This very portfolio — built with Next.js App Router, Tailwind CSS v4, and Framer Motion. Features scroll-triggered animations, glassmorphism design, responsive layout, and optimized performance with SSR.",
+      "This site. Built with the Next.js App Router and Tailwind CSS v4, server-rendered, responsive and keyboard accessible.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     highlight: "Open Source",
     status: "Live",
@@ -44,183 +41,81 @@ const projects = [
     title: "Pixcore",
     description:
       "E-commerce platform for premium mechanical keyboards engineered for developers. Features product configurator (switches, plate material, case color), QMK/VIA firmware support, hot-swap PCB listings, and a full shopping cart — priced in Thai Baht.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     highlight: "E-Commerce",
     status: "Live",
     github: "https://github.com/Chanin-Pholsiri/pixcore",
     demo: "https://pixcore-seven.vercel.app/",
     isPrivate: false,
   },
-  {
-    title: "Veltron",
-    description:
-      "Product marketing site for a smart wearable brand. Showcases three smartwatch models with health-monitoring specs (ECG, SpO2, GPS, sleep analysis), AI wellness insights, and localized e-commerce for Thai market.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    highlight: "Product Site",
-    status: "Live",
-    github: "https://github.com/Chanin-Pholsiri/veltron",
-    demo: "https://veltron-fawn.vercel.app/",
-    isPrivate: false,
-  },
-  {
-    title: "Agency Studio",
-    description:
-      "Creative design agency website offering brand identity, web design, UI/UX, and content strategy for startups and established brands across Asia. Features tiered pricing packages and a curated project showcase.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    highlight: "Agency",
-    status: "Live",
-    github: "https://github.com/Chanin-Pholsiri/agency-studio",
-    demo: "https://stackly-4b99.vercel.app/",
-    isPrivate: false,
-  },
-  {
-    title: "Stackly",
-    description:
-      "Web development studio landing page based in Bangkok. Highlights full-stack services (Next.js, Node.js, PostgreSQL, AWS), fixed-price packages from MVP to enterprise, and a clear discovery-call CTA.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    highlight: "Dev Studio",
-    status: "Live",
-    github: "https://github.com/Chanin-Pholsiri/stackly",
-    demo: "https://stackly-8.vercel.app/",
-    isPrivate: false,
-  },
 ];
 
+const linkClass = "inline-flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition-colors";
+
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="projects" className="relative py-28 px-6 bg-slate-950/40" ref={ref}>
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-cyan-400 text-sm font-semibold tracking-widest uppercase mb-3">
-            Work
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-slate-500 max-w-xl mx-auto text-sm leading-relaxed">
-            A selection of projects I&apos;ve architected and shipped across fintech,
-            enterprise, and personal domains.
-          </p>
-        </motion.div>
-
-        <div className="flex flex-col gap-6">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: 0.1 + i * 0.12 }}
-              className="relative glass rounded-2xl overflow-hidden border border-cyan-400/20 group hover:scale-[1.01] transition-transform duration-300"
+    <Section id="projects" title="Projects">
+      {/* Cards pin under the navbar and stack on top of each other while scrolling. */}
+      <ul className="flex flex-col gap-6 max-w-3xl mx-auto">
+        {projects.map((project) => (
+          <li key={project.title} className="lg:sticky lg:top-24 shadow-[0_0_30px] shadow-slate-950/60 rounded-xl">
+            <CodeWindow
+              title={project.title}
+              name="project"
+              entries={{
+                name: project.title,
+                type: project.highlight,
+                status: project.status,
+                stack: project.tags,
+                description: project.description,
+              }}
             >
-              {/* Gradient accent top bar */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-cyan-500/60 to-blue-500/60" />
-
-              {/* Gradient bg */}
-              <div className="absolute inset-0 bg-linear-to-br from-cyan-500/5 to-blue-500/5 pointer-events-none" />
-
-              <div className="relative p-7">
-                <div className="flex flex-col md:flex-row md:items-start gap-5">
-                  {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-400/20 flex items-center justify-center shrink-0">
-                    <Layers size={22} className="text-slate-300" />
-                  </div>
-
-                  <div className="flex-1">
-                    {/* Title row */}
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <h3 className="text-slate-100 font-bold text-xl">{project.title}</h3>
-                      <span className="px-2 py-0.5 rounded-full text-xs font-medium border text-cyan-400 border-cyan-400/30 bg-cyan-400/10">
-                        {project.highlight}
-                      </span>
-                      <span className="px-2 py-0.5 rounded-full text-xs font-medium border text-cyan-400 border-cyan-400/30 bg-cyan-400/10">
-                        {project.status}
-                      </span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                      {project.description}
-                    </p>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700/50"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Links */}
-                    <div className="flex items-center gap-3">
-                      {project.isPrivate ? (
-                        <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                          <Lock size={13} />
-                          <span>Private / Enterprise</span>
-                        </div>
-                      ) : (
-                        <>
-                          {project.github && (
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-400 transition-colors"
-                            >
-                              <GitHubIcon size={14} />
-                              Source
-                            </a>
-                          )}
-                          {project.demo && (
-                            <a
-                              href={project.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-400 transition-colors"
-                            >
-                              <ExternalLink size={13} />
-                              Live Demo
-                            </a>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
+              <div className="flex flex-wrap items-center gap-5 text-sm">
+                {project.isPrivate ? (
+                  <span className="inline-flex items-center gap-1.5 text-slate-500">
+                    <Lock size={14} aria-hidden />
+                    Private / enterprise
+                  </span>
+                ) : (
+                  <>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Source code for ${project.title}`}
+                        className={linkClass}
+                      >
+                        <GitHubIcon size={14} />
+                        Source
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target={project.demo.startsWith("#") ? undefined : "_blank"}
+                        rel="noopener noreferrer"
+                        aria-label={`Live site for ${project.title}`}
+                        className={linkClass}
+                      >
+                        <ExternalLink size={14} aria-hidden />
+                        Live site
+                      </a>
+                    )}
+                  </>
+                )}
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </CodeWindow>
+          </li>
+        ))}
+      </ul>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-10"
-        >
-          <a
-            href="https://github.com/chanin-pholsiri"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-slate-300 glass border border-slate-700/50 hover:border-cyan-400/40 hover:text-cyan-400 transition-all duration-200"
-          >
-            <GitHubIcon size={15} />
-            View GitHub Profile
-          </a>
-        </motion.div>
+      <div className="text-center mt-10">
+        <a href="https://github.com/chanin-pholsiri" target="_blank" rel="noopener noreferrer" className={`${linkClass} text-sm`}>
+          <GitHubIcon size={15} />
+          More on GitHub
+        </a>
       </div>
-    </section>
+    </Section>
   );
 }

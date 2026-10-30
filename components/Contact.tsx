@@ -1,148 +1,75 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Globe } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "./Icons";
+import Section from "./Section";
 
 const contacts = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "chaninpholsiri@gmail.com",
-    href: "mailto:chaninpholsiri@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+66-90-720-3797",
-    href: "tel:+66907203797",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Bangkok, Thailand",
-    href: null,
-  },
+  { icon: Mail, value: "chaninpholsiri@gmail.com", href: "mailto:chaninpholsiri@gmail.com" },
+  { icon: MapPin, value: "Bangkok, Thailand (UTC+7)", href: null },
+  { icon: Globe, value: "Open to remote and relocation · requires visa sponsorship", href: null },
 ];
 
 const socials = [
-  {
-    icon: GitHubIcon,
-    label: "GitHub",
-    value: "Chanin Pholsiri",
-    href: "https://github.com/chanin-pholsiri",
-  },
-  {
-    icon: LinkedInIcon,
-    label: "LinkedIn",
-    value: "Chanin Pholsiri",
-    href: "https://www.linkedin.com/in/chanin-pholsiri",
-  },
+  { icon: GitHubIcon, label: "GitHub", href: "https://github.com/chanin-pholsiri" },
+  { icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/chanin-pholsiri" },
 ];
 
+const circle = "inline-flex items-center justify-center rounded-full bg-slate-800 text-slate-300 shrink-0";
+
 export default function Contact() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="contact" className="relative py-28 px-6" ref={ref}>
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-cyan-400 text-sm font-semibold tracking-widest uppercase mb-3">
-            Get In Touch
+    <Section id="contact" title="Contact" variant="side">
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p className="text-cyan-400 font-medium uppercase tracking-wider mb-5">Get in touch</p>
+          <p className="text-lg text-slate-300 leading-relaxed mb-8">
+            I am open to new roles and collaborations. If you have a position or project in mind,
+            email is the best way to reach me.
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
-            Let&apos;s Work Together
-          </h2>
-          <p className="text-slate-400 max-w-lg mx-auto">
-            Open to new opportunities, collaborations, and interesting projects.
-            Feel free to reach out — I&apos;d love to hear from you.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Contact info */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="flex flex-col gap-4"
+          <a
+            href="mailto:chaninpholsiri@gmail.com"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium uppercase tracking-wider text-slate-950 bg-cyan-400
+              hover:bg-cyan-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
           >
-            <h3 className="text-slate-200 font-semibold text-lg mb-1">Contact Info</h3>
-            {contacts.map(({ icon: Icon, label, value, href }) => (
-              <div
-                key={label}
-                className="glass rounded-xl p-4 flex items-center gap-4 glow-hover transition-all duration-200"
-              >
-                <div className="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center shrink-0">
-                  <Icon size={18} className="text-cyan-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">{label}</p>
-                  {href ? (
-                    <a
-                      href={href}
-                      className="text-slate-200 text-sm hover:text-cyan-400 transition-colors font-medium"
-                    >
-                      {value}
-                    </a>
-                  ) : (
-                    <p className="text-slate-200 text-sm font-medium">{value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </motion.div>
+            <Mail size={16} aria-hidden />
+            Send an email
+          </a>
+        </div>
 
-          {/* Social + CTA */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="flex flex-col gap-4"
-          >
-            <h3 className="text-slate-200 font-semibold text-lg mb-1">Social Profiles</h3>
-            {socials.map(({ icon: Icon, label, value, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass rounded-xl p-4 flex items-center gap-4 glow-hover transition-all duration-200 group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center shrink-0 group-hover:bg-cyan-400/20 transition-colors">
-                  <Icon size={18} className="text-cyan-400" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs text-slate-500 mb-0.5">{label}</p>
-                  <p className="text-slate-200 text-sm font-medium group-hover:text-cyan-400 transition-colors">
+        <div>
+          <ul className="flex flex-col gap-6">
+            {contacts.map(({ icon: Icon, value, href }) => (
+              <li key={value} className="flex items-center gap-4 text-slate-200 md:text-lg">
+                <span className={`${circle} w-10 h-10`}>
+                  <Icon size={18} aria-hidden />
+                </span>
+                {href ? (
+                  <a href={href} className="hover:text-cyan-400 transition-colors break-all">
                     {value}
-                  </p>
-                </div>
-                <ExternalLink size={14} className="text-slate-600 group-hover:text-cyan-400 transition-colors" />
-              </a>
+                  </a>
+                ) : (
+                  value
+                )}
+              </li>
             ))}
+          </ul>
 
-            {/* Email CTA */}
-            <motion.a
-              href="mailto:chaninpholsiri@gmail.com"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="mt-2 flex items-center justify-center gap-2 p-4 rounded-xl font-semibold text-slate-900 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-400/20"
-            >
-              <Mail size={18} />
-              Send Me an Email
-            </motion.a>
-          </motion.div>
+          <ul className="flex items-center gap-5 mt-10">
+            {socials.map(({ icon: Icon, label, href }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={`${circle} w-12 h-12 hover:bg-cyan-400 hover:text-slate-950 transition-colors`}
+                >
+                  <Icon size={20} />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

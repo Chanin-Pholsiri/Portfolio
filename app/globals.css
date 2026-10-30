@@ -8,6 +8,39 @@
   --surface: #0f172a;
   --surface-2: #1e293b;
   --border: rgba(6, 182, 212, 0.15);
+
+  /* Tailwind's slate-500 (#62748e) fails WCAG AA (4.5:1) on the dark
+     background and cards; lift it just enough for muted text to pass. */
+  --color-slate-500: oklch(64% 0.045 257);
+}
+
+/* Light theme follows the OS setting. The components are written against the
+   dark palette, so light mode flips the slate scale and swaps the pale accent
+   and code colours for darker shades that stay readable on white. */
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --accent: #0e7490;
+
+    --color-slate-50:  oklch(12.9% 0.042 264.695);
+    --color-slate-100: oklch(20.8% 0.042 265.755);
+    --color-slate-200: oklch(27.9% 0.041 260.031);
+    --color-slate-300: oklch(37.2% 0.044 257.287);
+    --color-slate-400: oklch(44.6% 0.043 257.281);
+    --color-slate-500: oklch(52% 0.046 257.417);
+    --color-slate-600: oklch(70.4% 0.04 256.788);
+    --color-slate-700: oklch(86.9% 0.022 252.894);
+    --color-slate-800: oklch(92.9% 0.013 255.508);
+    --color-slate-900: oklch(96.8% 0.007 247.896);
+    --color-slate-950: oklch(98.4% 0.003 247.858);
+
+    --color-cyan-300: oklch(45% 0.085 224.283);
+    --color-cyan-400: oklch(52% 0.105 223.128);
+    --color-green-300: oklch(52.7% 0.154 150.069);
+    --color-blue-300: oklch(48.8% 0.243 264.376);
+    --color-purple-400: oklch(49.6% 0.265 301.924);
+  }
 }
 
 @theme inline {
@@ -16,6 +49,8 @@
   --color-accent: var(--accent);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
 * {
@@ -23,19 +58,20 @@
 }
 
 html {
+  color-scheme: light dark;
   scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
 ::selection {
   background: rgba(6, 182, 212, 0.3);
-  color: #e2e8f0;
+  color: var(--foreground);
 }
 
 ::-webkit-scrollbar {
@@ -55,71 +91,39 @@ body {
   background: var(--accent);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #06b6d4, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.glass {
-  @apply backdrop-blur-md;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(6, 182, 212, 0.12);
-}
-
 /* Higher-opacity variant for the navbar / mobile menu — floats over
    scrolling content, so it needs to stay legible against bright text
    and colored badges behind it, not just look "glassy". */
 .glass-nav {
   @apply backdrop-blur-lg;
-  background: rgba(8, 12, 20, 0.98);
-  border-bottom: 1px solid rgba(6, 182, 212, 0.12);
+  background: color-mix(in srgb, var(--background) 98%, transparent);
+  border-bottom: 1px solid var(--color-slate-800);
 }
 
-.glow {
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+.marquee-track {
+  animation: marquee 60s linear infinite;
 }
 
-.glow-hover:hover {
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.25);
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+@keyframes marquee {
+  to { transform: translateX(-50%); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
-  50% { box-shadow: 0 0 25px rgba(6, 182, 212, 0.6); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent);
-}
-
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.noise {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+/* Without motion the skills strip becomes a static wrapped list. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { width: auto; flex-wrap: wrap; animation: none; }
+  .marquee-track > ul { flex-wrap: wrap; }
+  .marquee-track > ul[aria-hidden] { display: none; }
 }

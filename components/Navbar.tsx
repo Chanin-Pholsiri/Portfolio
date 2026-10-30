@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 
 const links = [
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
@@ -39,42 +38,38 @@ export default function Navbar() {
         }
       }
     };
+    // Run once on mount: after a refresh the browser restores the scroll
+    // position without firing a scroll event, so the nav would stay transparent.
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || open ? "glass-nav shadow-lg shadow-black/30" : "bg-transparent"
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
+        scrolled || open ? "glass-nav" : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#hero" className="font-mono text-sm text-slate-200 hover:text-cyan-400 transition-colors">
+          chanin<span className="text-cyan-400">.</span>dev
+        </a>
+
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden md:flex items-center gap-1 ml-auto mr-4">
           {links.map((link) => {
             const isActive = active === link.href;
             return (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`relative px-3 py-1.5 text-sm rounded-lg transition-all duration-200 ${
-                    isActive
-                      ? "text-cyan-400"
-                      : "text-slate-400 hover:text-slate-200"
+                  aria-current={isActive ? "true" : undefined}
+                  className={`px-3 py-1.5 text-sm transition-colors ${
+                    isActive ? "text-slate-100" : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-lg bg-cyan-400/10 border border-cyan-400/20"
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.4 }}
-                    />
-                  )}
-                  <span className="relative">{link.label}</span>
+                  {link.label}
                 </a>
               </li>
             );
@@ -86,7 +81,7 @@ export default function Navbar() {
           href="/Chanin_Pholsiri_Resume.pdf"
           download
           className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-cyan-400
-            border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 transition-all duration-200"
+            border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 transition-colors"
         >
           <Download size={13} />
           Resume
@@ -97,49 +92,43 @@ export default function Navbar() {
           className="md:hidden text-slate-400 hover:text-cyan-400 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-nav border-t border-cyan-400/10"
-          >
-            <ul className="px-6 py-4 flex flex-col gap-3">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className={`block text-sm py-1 transition-colors ${
-                      active === link.href ? "text-cyan-400" : "text-slate-300 hover:text-cyan-400"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li className="pt-1">
+      {open && (
+        <div className="md:hidden glass-nav border-t border-slate-800">
+          <ul className="px-6 py-4 flex flex-col gap-3">
+            {links.map((link) => (
+              <li key={link.href}>
                 <a
-                  href="/Chanin_Pholsiri_Resume.pdf"
-                  download
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-cyan-400
-                    border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 transition-all"
+                  href={link.href}
+                  className={`block text-sm py-1 transition-colors ${
+                    active === link.href ? "text-slate-100" : "text-slate-400 hover:text-slate-200"
+                  }`}
+                  onClick={() => setOpen(false)}
                 >
-                  <Download size={13} />
-                  Resume
+                  {link.label}
                 </a>
               </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+            ))}
+            <li className="pt-1">
+              <a
+                href="/Chanin_Pholsiri_Resume.pdf"
+                download
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-cyan-400
+                  border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 transition-colors"
+              >
+                <Download size={13} />
+                Resume
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 }
