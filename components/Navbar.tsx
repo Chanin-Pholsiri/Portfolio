@@ -81,7 +81,7 @@ export default function Navbar() {
           href="/Chanin_Pholsiri_Resume.pdf"
           download
           className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-cyan-400
-            border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 transition-colors"
+            border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 press"
         >
           <Download size={13} />
           Resume
@@ -100,7 +100,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden glass-nav border-t border-slate-800">
+        <div className="md:hidden glass-nav border-t border-slate-800 transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] starting:opacity-0 starting:-translate-y-1.5">
           <ul className="px-6 py-4 flex flex-col gap-3">
             {links.map((link) => (
               <li key={link.href}>
@@ -120,7 +120,7 @@ export default function Navbar() {
                 href="/Chanin_Pholsiri_Resume.pdf"
                 download
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-cyan-400
-                  border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 transition-colors"
+                  border border-cyan-400/40 rounded-lg hover:bg-cyan-400/10 press"
               >
                 <Download size={13} />
                 Resume

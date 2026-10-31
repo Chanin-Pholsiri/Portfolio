@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Financial Crime Prevention API System",
     description:
-      "Confidential enterprise backend built under Thailand's Technology Crime Prevention and Suppression Act (B.E. 2566), Sections 6 & 7. As the sole engineer, I own every Spring Boot API — fund suspension of mule accounts, conditional release, and bank warrant / legal hold processing — integrated with all banks and non-bank financial institutions in Thailand and handling 300–600 enforcement cases per day. Built with strict security controls, audit logging, and high-availability deployment.",
+      "Confidential enterprise backend built under Thailand's Technology Crime Prevention and Suppression Act (B.E. 2566), Sections 6 & 7. I am the only engineer on it and own every Spring Boot API: fund suspension of mule accounts, conditional release, and bank warrant / legal hold processing. It connects to every bank and non-bank financial institution in Thailand, handles 300–600 enforcement cases per day, and runs with strict security controls, audit logging and high-availability deployment.",
     tags: ["Spring Boot", "Java", "Angular", "Jenkins", "Rancher", "Harbor", "PostgreSQL"],
     highlight: "Fintech · Confidential",
     status: "Production",
@@ -18,7 +18,7 @@ const projects = [
   {
     title: "Enterprise Web Application Suite",
     description:
-      "Full-stack enterprise applications for G-Able's clients — covering responsive Angular frontends, Node.js/Python APIs, and multi-environment Docker deployments. Led UI architecture and API validation.",
+      "Full-stack enterprise applications for G-Able's clients: responsive Angular frontends, Node.js/Python APIs and Docker deployments across several environments. I led UI architecture and API validation.",
     tags: ["Angular", "TypeScript", "Node.js", ".NET Core", "Python", "Docker", "Bootstrap"],
     highlight: "Enterprise",
     status: "Production",
@@ -40,7 +40,7 @@ const projects = [
   {
     title: "Pixcore",
     description:
-      "E-commerce platform for premium mechanical keyboards engineered for developers. Features product configurator (switches, plate material, case color), QMK/VIA firmware support, hot-swap PCB listings, and a full shopping cart — priced in Thai Baht.",
+      "E-commerce site for premium mechanical keyboards aimed at developers. It has a product configurator (switches, plate material, case color), QMK/VIA firmware support, hot-swap PCB listings and a shopping cart, with prices in Thai Baht.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     highlight: "E-Commerce",
     status: "Live",

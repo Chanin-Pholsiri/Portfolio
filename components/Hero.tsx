@@ -18,7 +18,7 @@ const rise = (delay: number) => ({
 });
 
 const buttonBase =
-  "inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300";
+  "inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium uppercase tracking-wider press focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300";
 
 export default function Hero() {
   return (
@@ -32,8 +32,8 @@ export default function Hero() {
             Hi, I&apos;m <span className="text-cyan-400">Chanin Pholsiri</span>.
           </motion.h1>
           <motion.p {...rise(0.04)} className="mt-5 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-xl">
-            Full-stack engineer building secure, regulated fintech systems — 5+ years with React,
-            Spring Boot and .NET.
+            Full-stack engineer building web apps and enterprise systems, from business websites
+            to secure fintech platforms. 5+ years with React, Next.js, Angular, Spring Boot and .NET.
           </motion.p>
 
           <motion.ul {...rise(0.08)} className="flex items-center gap-5 my-10">
@@ -72,7 +72,7 @@ export default function Hero() {
               name: "Chanin Pholsiri",
               skills: ["React", "Next.js", "TypeScript", "Angular", "ASP.NET Core", "Spring Boot", "Docker", "Nginx", "PostgreSQL"],
               experience: "5+ years",
-              domain: "Fintech & Enterprise",
+              domain: ["Web Apps", "Enterprise Systems", "Fintech"],
               location: "Bangkok, Thailand",
               openTo: ["Remote", "Relocation"],
             }}

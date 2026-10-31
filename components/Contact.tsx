@@ -28,7 +28,7 @@ export default function Contact() {
           <a
             href="mailto:chaninpholsiri@gmail.com"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium uppercase tracking-wider text-slate-950 bg-cyan-400
-              hover:bg-cyan-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+              hover:bg-cyan-300 press focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
           >
             <Mail size={16} aria-hidden />
             Send an email
@@ -61,7 +61,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`${circle} w-12 h-12 hover:bg-cyan-400 hover:text-slate-950 transition-colors`}
+                  className={`${circle} w-12 h-12 hover:bg-cyan-400 hover:text-slate-950 press`}
                 >
                   <Icon size={20} />
                 </a>

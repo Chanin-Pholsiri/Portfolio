@@ -21,7 +21,7 @@ const focus = [
 ];
 
 const strengths = [
-  "TypeScript-first", "Clean Architecture", "Financial Domain",
+  "TypeScript-first", "Clean Architecture", "Web & Enterprise Apps",
   "Performance Optimization", "Team Leadership", "Agile/Scrum",
 ];
 
@@ -34,21 +34,20 @@ export default function About() {
           <p className="text-slate-300 text-lg mb-5">
             I&apos;m a{" "}
             <span className="text-cyan-400 font-semibold">Full-Stack Software Engineer</span>{" "}
-            based in Bangkok, Thailand, with 5+ years turning complex requirements into
-            scalable, maintainable software — across fintech, enterprise, and startup environments.
+            based in Bangkok, Thailand. For 5+ years I&apos;ve built web apps and backend systems
+            for fintech, enterprise and startup teams.
           </p>
           <p className="mb-5">
-            I work comfortably across the entire stack: architecting TypeScript-driven UIs in
-            React and Angular, building financial-grade APIs with ASP.NET Core and Spring Boot,
-            and shipping to production via Docker and Nginx. I care deeply about code quality,
-            security, and performance.
+            On the frontend I write TypeScript UIs in React, Next.js and Angular. On the backend I
+            build APIs with ASP.NET Core, Spring Boot and Node.js, then ship them with Docker and
+            Nginx. I pay close attention to code quality, security and performance.
           </p>
           <p className="mb-7">
-            Currently at{" "}
-            <span className="text-slate-200 font-semibold">Sirisoft Public Company Limited</span>,
-            where I lead frontend architecture and build backend services for sensitive financial
-            enforcement workflows — including fund suspension, account release APIs, and bank
-            warrant processing systems.
+            At{" "}
+            <span className="text-slate-200 font-semibold">Sirisoft Public Company Limited</span>{" "}
+            I lead frontend architecture and build web apps and backend services for several
+            clients. One of them is a national financial enforcement system that handles fund
+            suspension, account release and bank warrant processing.
           </p>
 
           <ul className="flex flex-wrap gap-2">
